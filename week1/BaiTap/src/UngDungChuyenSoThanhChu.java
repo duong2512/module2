@@ -5,29 +5,72 @@ public class UngDungChuyenSoThanhChu {
         System.out.println("Số cần đọc");
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-            switch (number){
+        int hangChuc = number / 10;
+        int hangDonVi = number % 10;
+        String result = "";
+
+        if (hangChuc > 0) {
+            switch (hangChuc) {
                 case 1:
-                    System.out.println("One");
-                case 2 :
-                    System.out.println("Two");
-                case 3 :
-                    System.out.println("Three");
-                case 4 :
-                    System.out.println("Four");
-                case 5 :
-                    System.out.println("Five");
-                case 6 :
-                    System.out.println("Six");
-                case 7 :
-                    System.out.println("Seven");
-                case 8 :
-                    System.out.println("Eight");
-                case 9 :
-                    System.out.println("Nine");
-                case 10 :
-                    System.out.println("Ten");
-                default:
-                    System.out.println("out of ability");
+                    result += "One ";
+                    break;
+                case 2:
+                    result += "Two ";
+                    break;
+                case 3:
+                    result += "Three ";
+                    break;
+                case 4:
+                    result += "Four ";
+                    break;
+                case 5:
+                    result += "Five ";
+                    break;
+                case 6:
+                    result += "Six ";
+                    break;
+                case 7:
+                    result += "Seven";
+                    break;
+                case 8:
+                    result += "eight ";
+                    break;
+                case 9:
+                    result += "Nine ";
+                    break;
             }
+        }
+        switch (hangDonVi) {
+            case 1:
+                result += "One ";
+                break;
+            case 2:
+                result += "Two ";
+                break;
+            case 3:
+                result += "Three ";
+                break;
+            case 4:
+                result += "Four ";
+                break;
+            case 5:
+                result += "Five ";
+                break;
+            case 6:
+                result += "Six ";
+                break;
+            case 7:
+                result += "Seven";
+                break;
+            case 8:
+                result += "eight ";
+                break;
+            case 9:
+                result += "Nine ";
+                break;
+        }
+
+
+        System.out.println(result);
     }
 }
