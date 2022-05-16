@@ -3,9 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/week1/BaiTap/BaiTap.iml" filepath="$PROJECT_DIR$/week1/BaiTap/BaiTap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week2/BaiTapp/BaiTapp.iml" filepath="$PROJECT_DIR$/week2/BaiTapp/BaiTapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module2.iml" filepath="$PROJECT_DIR$/Module2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week2/ThucHanh/ThucHanh.iml" filepath="$PROJECT_DIR$/week2/ThucHanh/ThucHanh.iml" />
       <module fileurl="file://$PROJECT_DIR$/week1/thucHanh/thucHanh.iml" filepath="$PROJECT_DIR$/week1/thucHanh/thucHanh.iml" />
       <module fileurl="file://$PROJECT_DIR$/week1/week1.iml" filepath="$PROJECT_DIR$/week1/week1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week2/week2.iml" filepath="$PROJECT_DIR$/week2/week2.iml" />
     </modules>
   </component>
 </project>
