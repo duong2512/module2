@@ -16,6 +16,8 @@ public class MyListTest {
         listInterger.add(6);
         System.out.println("element 6: "+listInterger.get(3));
 
+        listInterger.get(-1);
+        System.out.println("element -1: " + listInterger.get(-1));
 
 
     }
