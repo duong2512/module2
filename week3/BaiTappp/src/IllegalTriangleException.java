@@ -1,8 +1,10 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IllegalTriangleException extends Throwable {
     public IllegalTriangleException() {
     }
+
 
     public IllegalTriangleException(String message) {
         super(message);
@@ -12,19 +14,21 @@ public class IllegalTriangleException extends Throwable {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Nhập a: ");
-            int a = scanner.nextInt();
+           double a = scanner.nextInt();
             System.out.println("Nhập b:");
-          int  b = scanner.nextInt();
+          double b = scanner.nextInt();
             System.out.println("Nhập c");
-           int c = scanner.nextInt();
+          double c = scanner.nextInt();
            isTriangle(a,b,c);
 
-        } catch (IllegalTriangleException e1){
+        } catch (IllegalTriangleException e1) {
             System.out.println(e1.getMessage());
+        } catch (InputMismatchException e){
+            System.out.println("Nhập sai định dạng");
         }
     }
 
-    static public boolean isTriangle(double a , double b , double c) throws IllegalTriangleException{
+    static public boolean isTriangle(double a ,double b ,double c) throws IllegalTriangleException{
 
         if (a>0 && b>0 && c>0){
             if (a+b>c&&a+c>b&&b+c>a){
@@ -32,6 +36,6 @@ public class IllegalTriangleException extends Throwable {
                 return true;
             }else throw new  IllegalTriangleException("tong 2 canh <= canh con lai");
         }else throw new  IllegalTriangleException("tam giac co canh <= 0");
-
     }
+
 }
