@@ -7,7 +7,7 @@ public class GopMang {
         int length = arr.length + array.length;
         int [] myarr = new int[length];
         int pos = 0;
-
+        
 
         for (int a: arr
              ) {
