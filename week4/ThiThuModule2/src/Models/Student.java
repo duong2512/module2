@@ -70,8 +70,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return  msv + ',' + name + ',' + gender+','+
-                age + ',' + address +
-                ',' + pointTB;
+        return msv + "," + name + "," + gender+","+
+                age + "," + address +
+                "," + pointTB;
     }
 }

@@ -27,13 +27,15 @@ public class ManagerStudent {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice){
             case 1:
-                System.out.println(readAndWrite.read(students));
+                show();
                 break;
             case 2:
-                addStudent();
+                addStudent(Sinhviencreate());
                 break;
             case 3:
-                update();
+                System.out.println("nhap msv can sua");
+                int msv = Integer.parseInt(scanner.nextLine());
+                update(checkid(msv),Sinhviencreate());
                 break;
             case 4:
                 remove();
@@ -42,9 +44,10 @@ public class ManagerStudent {
                 sortById();
                 break;
             case 6:
-                System.out.println(readAndWrite.read(students));
+               readAndWrite.read(students);
                 break;
             case 7:
+                addStudent(Sinhviencreate());
                 readAndWrite.write(students);
                 break;
             case 8:
@@ -52,34 +55,13 @@ public class ManagerStudent {
         }
     }
 
-    public void addStudent(){
-        try {
-            System.out.println("Nhập mã sinh viên:");
-            int msv = Integer.parseInt(scanner.nextLine());
-            System.out.println("Nhập tên sinh viên:");
-            String name = scanner.nextLine();
-            System.out.println("Nhập tuổi sinh sinh viên:");
-            int age = Integer.parseInt(scanner.nextLine());
-            System.out.println("Nhập giới tính của sinh viên:");
-            String gender = scanner.nextLine();
-            System.out.println("Nhập địa chỉ:");
-            String address = scanner.nextLine();
-            System.out.println("Nhập điểm trung bình");
-            int pointTB = Integer.parseInt(scanner.nextLine());
-            Student student = new Student(msv, name, age, gender, address, (int) pointTB);
-            students.add(student);
-
-        } catch (NumberFormatException e) {
-            System.out.println("Nhập lại đi sai cụ m rồi");
-        }
+    public void addStudent(Student s){
+        students.add(s);
+        readAndWrite.write(students);
     }
-
-    public void update() {
-        System.out.println("Nhập mã sinh viên cần sửa: ");
-        int msv = Integer.parseInt(scanner.nextLine());
-
+    public Student Sinhviencreate(){
         System.out.println("Nhập Mã Sinh Viên");
-        int msv1=Integer.parseInt(scanner.nextLine());
+        int msv=Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập họ tên");
         String name=scanner.nextLine();
         System.out.println("Nhập tuổi");
@@ -89,14 +71,13 @@ public class ManagerStudent {
         System.out.println("Nhập địa chỉ: ");
         String address=scanner.nextLine();
         System.out.println("Nhập điểm trung bình");
-        int pointTB = Integer.parseInt(scanner.nextLine());
-        Student student = new Student(msv1,name,age,gender,address,pointTB);
-        for (int i = 0; i < students.size(); i++) {
-            if (msv==students.get(i).getMsv()){
-                students.set(i,student);
-            }
-            readAndWrite.write(students);
-        }
+        double pointTB= Double.parseDouble(scanner.nextLine());
+        return new Student(msv,name,age,gender,address,pointTB);
+    }
+
+    public void update(int index , Student sinhvien) {
+        students.set(index,sinhvien);
+        readAndWrite.write(students);
     }
 
     public void remove(){
@@ -115,4 +96,20 @@ public class ManagerStudent {
         readAndWrite.write(students);
         readAndWrite.read(students);
     }
+    
+    public void show(){
+        for (Student a: students) {
+            System.out.println(a.toString());
+        }
+    }
+    public int checkid(int msv){
+        for (int i =0; i<students.size(); i++) {
+            if (students.get(i).getMsv()==msv){
+                int index = i;
+                return index;
+            }
+        }
+        return -1;
+    }
+
 }
