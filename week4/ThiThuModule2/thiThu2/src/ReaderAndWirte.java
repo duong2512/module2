@@ -29,7 +29,7 @@ public class ReaderAndWirte {
             String str = bufferedReader.readLine();
             while (str != null) {
                 String[] arr = str.split(",");
-                int msp = Integer.parseInt(arr[0]);
+                String msp = arr[0];
                 String name = arr[1];
                 double price = Double.parseDouble(arr[2]);
                 int num = Integer.parseInt(arr[3]);

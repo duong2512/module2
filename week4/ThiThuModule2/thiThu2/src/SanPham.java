@@ -1,5 +1,5 @@
 public class SanPham {
-    private int msp;
+    private String msp;
     private String name;
     private double price;
     private int num;
@@ -8,7 +8,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(int msp, String name, double price, int num, String describe) {
+    public SanPham(String msp, String name, double price, int num, String describe) {
         this.msp = msp;
         this.name = name;
         this.price = price;
@@ -16,11 +16,11 @@ public class SanPham {
         this.describe = describe;
     }
 
-    public int getMsp() {
+    public String getMsp() {
         return msp;
     }
 
-    public void setMsp(int msp) {
+    public void setMsp(String msp) {
         this.msp = msp;
     }
 
