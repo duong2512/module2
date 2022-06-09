@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateSDT {
-    private static final String SDT_REGEX = "^0[0-9]{9}$";
+    private final String SDT_REGEX = "^0[0-9]{9}$";
 
     public ValidateSDT() {
     }

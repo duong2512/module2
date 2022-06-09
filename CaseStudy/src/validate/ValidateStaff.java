@@ -1,6 +1,6 @@
 package validate;
 
-import model.Staff;
+import model.NhanVien;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,21 +10,21 @@ import java.util.Scanner;
 public class ValidateStaff {
     Scanner scanner = new Scanner(System.in);
     SimpleDateFormat df=new SimpleDateFormat("dd/MM/yyyy");
-    public int getIndexId(int id, ArrayList<Staff> staff) {
-        for (int i = 0; i < staff.size(); i++) {
-            if (staff.get(i).getId() == id) {
+    public int getIndexId(int id, ArrayList<NhanVien> nhanVienArrayList) {
+        for (int i = 0; i < nhanVienArrayList.size(); i++) {
+            if (nhanVienArrayList.get(i).getId() == id) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int validateID(ArrayList<Staff> staff) {
+    public int validateID(ArrayList<NhanVien> nhanVienArrayList) {
         while (true) {
             try {
                 System.out.println("Nhập id (nhập bằng số !) ");
                 int id = Integer.parseInt(scanner.nextLine());
-                if (getIndexId(id, staff) != -1) {
+                if (getIndexId(id, nhanVienArrayList) != -1) {
                     throw new RuntimeException();
                 }
                 return id;
@@ -34,17 +34,33 @@ public class ValidateStaff {
         }
     }
 
-    public String validateName(String name){
-        while (true){
-            System.out.println("Nhập " + name);
-            String str = scanner.nextLine();
-            if (str.equals("")){
-                System.err.println("Không được để trống !");
-                continue;
+    public String validateName() {
+        String nameNV;
+        while (true) {
+            System.out.println("Nhập vào Tên");
+            nameNV = scanner.nextLine();
+            if (nameNV.equals("")) {
+                System.out.println("Không được bỏ trống !");
+
             } else {
-                return str;
+                if(checkName(nameNV)){
+                    return nameNV;
+                }else {
+                    System.out.println("Nhập tên không có số !");
+                }
             }
         }
+    }
+
+    boolean checkName(String name){
+        for (int i=0;i<name.length();i++){
+            try {
+                Integer.parseInt(Character.toString(name.charAt(i)));
+                return false;
+            }catch (Exception e){
+            }
+        }
+        return true;
     }
 
     public int validateAge(){
@@ -52,9 +68,13 @@ public class ValidateStaff {
             try {
                 System.out.println("Nhập tuổi :");
                 int age = Integer.parseInt(scanner.nextLine());
-                return age;
+                if (age>18 && age<=50){
+                    return age;
+                } else System.out.println("Nhập tuổi từ 19 đến 50");
+            } catch (NumberFormatException e){
+                System.out.println("Nhập tuổi từ 19 đến 50");
             } catch (Exception e){
-                System.out.println("Tuổi không hợp lệ");
+                System.out.println("Tuổi nhập không hợp lệ");
             }
         }
     }
@@ -63,11 +83,12 @@ public class ValidateStaff {
         Date dateFormat;
         while (true){
             try{
-                System.out.println("Nhập vào ngày sinh. (dd/MM/yyyy)");
+                System.out.println("Nhập vào ngày/tháng/năm sinh. (dd/MM/yyyy)");
                 dateFormat = df.parse(scanner.nextLine());
                 return dateFormat;
+
             } catch (Exception e){
-                System.out.println(e);
+                System.out.println("Nhập sai đinh dạng");
             }
         }
 
@@ -85,66 +106,67 @@ public class ValidateStaff {
                } else if (choice == 2){
                    return "Nữ";
                } else
-                   return "Chọn 1 hoặc 2 !";
+                   System.out.println("Chọn 1 hoặc 2");
            } catch (NumberFormatException e) {
-               throw new RuntimeException(e);
+               System.out.println("Chọn 1 hoặc 2");
+           } catch (Exception e){
+               System.out.println("Nhập lại lựa chọn");
            }
 
         }
     }
 
-    public String validateSDT (String sdt){
+    public String validateSDT (){
         while (true){
             try {
                 ValidateSDT validateSDT = new ValidateSDT();
+                System.out.println("Nhập số điện thoại" );
                 String str = scanner.nextLine();
-                System.out.println("Nhập" + sdt );
-                validateSDT.validate(sdt);
-                return str;
+                if (validateSDT.validate(str)){
+                    return str;
+                } else {
+                    System.out.println("Nhập theo dạng 0xxxxxxxxxx");
+                }
+
             }catch (Exception e){
-                System.out.println("Chỉ nhập số ");
-                System.out.println("--------------------------------------------------");
+                System.out.println("Nhập theo dạng 0xxxxxxxxx");
             }
         }
     }
 
-    public String validateAddress(String address){
-        while(true){
-            try{
-                System.out.println("Nhập " + address);
-                String str = scanner.nextLine();
-                return str;
+    public String validateAddress(){
+        String address;
+        while (true) {
+            try {
+                System.out.println("Nhập địa chỉ");
+                address= scanner.nextLine();
+                if (address.equals("")) {
+                    System.out.println("Không được bỏ trống !");
+                } else return address;
             } catch (Exception e){
                 System.out.println(e);
             }
         }
     }
 
-    public String validateCMT (){
+    public String validateStatus(){
         while (true){
-            try{
-                System.out.println("Nhập số CMT :");
-                String cmt = scanner.nextLine();
-
-                return cmt;
-            } catch (Exception e){
+            try {
+                System.out.println("Chọn trạng thái nhân viên:");
+                System.out.println("1. Đã nghỉ việc");
+                System.out.println("2. Đang làm việc");
+                int choice = Integer.parseInt(scanner.nextLine());
+                if (choice == 1){
+                    return "Đã nghỉ việc !";
+                } else if (choice == 2){
+                    return "Đang làm việc ";
+                } else
+                    System.out.println("Chọn 1 hoặc 2");
+            } catch (Exception e) {
                 System.out.println(e);
             }
         }
     }
-
-    public boolean validateStatus(){
-        while (true){
-            System.out.println("Chọn trạng thái nhân viên:");
-            System.out.println("1. ");
-        }
-    }
-
-
-
-
-
-
 }
 
 
