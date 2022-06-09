@@ -80,7 +80,6 @@ public class ManagerNhanVien {
                 System.out.println("1. Tạo FullTime");
                 System.out.println("2. Tạo PartTime");
                 int choice1 = Integer.parseInt(scanner.nextLine());
-                if (choice1==1 || choice1 ==2){
                     switch (choice1) {
                         case 1:
                             NhanVien nhanVienFull = createNv(true);
@@ -91,11 +90,9 @@ public class ManagerNhanVien {
                             nhanVienArrayList.add(nhanVienPart);
                             break;
                     }
-                } else {
-                    throw new Exception();
-
+                if (choice1 < 1||choice1>2) {
+                    System.out.println("Nhập quá chỉ số vui lòng nhập lại");
                 }
-                break;
             } catch (NumberFormatException e){
                 System.out.println("Nhập lại lựa chọn !");
             } catch (Exception e) {
