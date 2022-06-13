@@ -1,13 +1,12 @@
 package model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
 
-public class NhanVien {
+public class NhanVien implements Serializable {
     private int id;
     private String name;
     private int age;
-    private Date date;
+    private String date;
     private String gender;
     private String address;
     private String sdt;
@@ -17,7 +16,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(int id, String name, int age, Date date, String gender, String address, String sdt, String status) {
+    public NhanVien(int id, String name, int age, String date, String gender, String address, String sdt, String status) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -52,11 +51,11 @@ public class NhanVien {
         this.age = age;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -92,19 +91,23 @@ public class NhanVien {
         this.status = status;
     }
 
+    public double getSalary(){
+        return 0;
+    }
+
 
     @Override
     public String toString() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/xxxx");
-        return "Nhân viên :" +
-                "ID :" + id +
+        return
+                "ID : " + id +
                 ", Tên : " + name +
                 ", Tuổi : " + age +
-                ", Sinh nhật : " + simpleDateFormat.format(date) +
+                ", Sinh nhật : " + date +
                 ", Giới tính : " + gender +
                 ", Địa chỉ : " + address +
                 ", SĐT : " + sdt +
                 ",  Trạng thái : " + status
                 ;
     }
+
 }

@@ -1,10 +1,23 @@
+import controller.ManagerAccount;
 import controller.ManagerNhanVien;
+import model.Account;
 
 public class Main {
     public static void main(String[] args) {
         ManagerNhanVien managerNhanVien = new ManagerNhanVien();
+        ManagerAccount managerAccount = new ManagerAccount();
         while (true){
-            managerNhanVien.menu();
+
+
+            if (managerAccount.account== null) {
+                managerAccount.menuAcc(managerAccount);
+            } else {
+                if (managerAccount.account.getRole().equals("admin")) {
+                    managerNhanVien.menuAdmin();
+                } else {
+                    managerNhanVien.menuUser();
+                }
+            }
         }
     }
 }

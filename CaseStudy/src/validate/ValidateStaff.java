@@ -6,10 +6,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ValidateStaff {
+    private static final String DATE_REGEX = "^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$";
     Scanner scanner = new Scanner(System.in);
-    SimpleDateFormat df=new SimpleDateFormat("dd/MM/yyyy");
     public int getIndexId(int id, ArrayList<NhanVien> nhanVienArrayList) {
         for (int i = 0; i < nhanVienArrayList.size(); i++) {
             if (nhanVienArrayList.get(i).getId() == id) {
@@ -79,20 +81,20 @@ public class ValidateStaff {
         }
     }
 
-    public Date validateDate(){
-        Date dateFormat;
-        while (true){
-            try{
-                System.out.println("Nhập vào ngày/tháng/năm sinh. (dd/MM/yyyy)");
-                dateFormat = df.parse(scanner.nextLine());
-                return dateFormat;
-
-            } catch (Exception e){
-                System.out.println("Nhập sai đinh dạng");
-            }
-        }
-
-    }
+//    public Date validateDate(){
+//        Date dateFormat;
+//        while (true){
+//            try{
+//                System.out.println("Nhập vào ngày/tháng/năm sinh. (dd/MM/yyyy)");
+//                dateFormat = df.parse(scanner.nextLine());
+//                return dateFormat;
+//
+//            } catch (Exception e){
+//                System.out.println("Nhập sai đinh dạng");
+//            }
+//        }
+//
+//    }
 
     public String validateGender(){
         while (true){
@@ -125,7 +127,7 @@ public class ValidateStaff {
                 if (validateSDT.validate(str)){
                     return str;
                 } else {
-                    System.out.println("Nhập theo dạng 0xxxxxxxxxx");
+                    System.out.println("Nhập theo dạng 0xxxxxxxxx");
                 }
 
             }catch (Exception e){
@@ -166,6 +168,59 @@ public class ValidateStaff {
                 System.out.println(e);
             }
         }
+    }
+
+    public String validateDate() {
+        String date=null;
+        while (true)
+        try{
+            System.out.println("Nhập/ngày/tháng/năm sinh (theo định dạng dd/MM/xxxx)");
+            date = scanner.nextLine();
+            Pattern pattern = Pattern.compile(DATE_REGEX);
+            Matcher matcher = pattern.matcher(date.trim());
+            if (matcher.matches()){
+                break;
+            } else System.out.println("Nhập theo định dạng dd/MM/xxxx ");;
+        } catch (Exception e){
+            System.out.println("Nhập sai định dạng");
+        }
+        return date;
+    }
+
+    public int Valiheso() {
+        int hs=0;
+        while (true){
+            System.out.println("Nhập hệ số:");
+            hs= Integer.parseInt(scanner.nextLine());
+            try {
+                if(hs>0){
+                    break;
+                } else System.out.println("Nhập lại hệ số");
+            } catch (NumberFormatException e){
+                System.out.println("Nhập sai định dạng !");
+            } catch (Exception e) {
+                System.out.println("Nhập lại hệ số");
+            }
+        }
+        return hs;
+    }
+
+    public int Valisobuoi() {
+        int sb=0;
+        while (true){
+            System.out.println("Nhập số buổi :");
+            sb= Integer.parseInt(scanner.nextLine());
+            try {
+                if(sb>0){
+                    break;
+                } else System.out.println("Nhập lại số buổi");
+            } catch (NumberFormatException e){
+                System.out.println("Nhập sai định dạng !");
+            } catch (Exception e) {
+                System.out.println("Nhập lại số buổi");
+            }
+        }
+        return sb;
     }
 }
 

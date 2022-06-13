@@ -10,6 +10,5 @@ public class TimGiaTriNhoNhatTrongMang {
             }
         }
         System.out.println("Giá trị nhỏ nhất là: " + min);
-
     }
 }
