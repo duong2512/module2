@@ -8,7 +8,6 @@ public class quanLiSanPham {
 
     ValidateSanPham validateSanPham =new ValidateSanPham();
 
-
     public void menu() {
         while (true) {
             try {
@@ -54,11 +53,10 @@ public class quanLiSanPham {
                             System.exit(0);
                     }
                 }
-                throw new Exception();
             } catch (NumberFormatException e) {
-                System.out.println("Nhập sai định dạng");
+                System.err.println("Nhập sai định dạng");
             } catch (Exception e) {
-                System.out.println("Nhập từ 1 - 9 thôi");
+                System.err.println("Xin vui lòng nhập lại");
             }
         }
     }
@@ -75,43 +73,33 @@ public class quanLiSanPham {
     }
 
     public SanPham createSp(){
+                String msp = validateSanPham.checkCodeProduct(sanPhams);
+                String name = validateSanPham.checkNameProduct();
+                double price = validateSanPham.checkPriceProduct();
+                int num = validateSanPham.checkQuantityProduct();
+                System.out.println("Nhập mô tả sản phẩm : ");
+                String describe = scanner.nextLine();
 
-        String msp = validateSanPham.checkCodeProduct(sanPhams);
-        String name = validateSanPham.checkNameProduct(sanPhams);
-        double price = validateSanPham.checkPriceProduct();
-        int num = validateSanPham.checkQuantityProduct();
-        System.out.println("Nhập mô tả sản phẩm : ");
-        String describe = scanner.nextLine();
-
-        return new SanPham(msp,name,price,num,describe);
+                return new SanPham(msp,name,price,num,describe);
     }
 
     public void addSp(SanPham sanPham){
         sanPhams.add(sanPham);
     }
 
-//    public int getIndexMsp(String msp, ArrayList<SanPham> students) {
-//        for (int i = 0; i < sanPhams.size(); i++) {
-//            if (sanPhams.get(i).getMsp().equals(msp)) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
-
     public void editSp(){
-        System.out.println("Nhập mã sản phẩm cần sửa");
-        String msp = scanner.nextLine();
-        if(validateSanPham.checkCodeProductExist(sanPhams,msp)>=0){
-            int vt= validateSanPham.checkCodeProductExist(sanPhams,msp);
-            sanPhams.set(vt,createSp());
+        while (true){
+            try {
+                System.out.println("Nhập mã sản phẩm cần sửa");
+                String msp = scanner.nextLine();
+                if(validateSanPham.checkCodeProductExist(sanPhams,msp)>=0){
+                    int vt= validateSanPham.checkCodeProductExist(sanPhams,msp);
+                    sanPhams.set(vt,createSp());
+                }
+            } catch (Exception e){
+                System.out.println("Vui lòng nhập lại");
+            }
         }
-//        int index = this.getIndexMsp(msp,sanPhams);
-//        if (index != -1){
-//            sanPhams.set(index, createSp());
-//        } else {
-//            System.err.println("Mã sản phẩm không tồn tại");
-//        }
     }
 
     public void delete(){
@@ -124,30 +112,14 @@ public class quanLiSanPham {
                  break;
              }
          }
-//            int index = this.getIndexMsp(msp,sanPhams);
-//            if (index != -1){
-//
-//                sanPhams.remove(index);
-//            } else {
-//                System.err.println("Không tìm được sản phẩm với mã sản phẩm trên");
-//            }
     }
-
-//    public void sortPriceTangDan(){
-//        sanPhams.sort(new SortTangDan());
-//        System.out.println("Sắp xếp thành công");
-//    }
-//
-//    public void sortPriceGiamDan(){
-//        sanPhams.sort(new SortGiamDan());
-//        System.out.println("Sắp xếp thành công");
-//    }
 
     public void sortPrice(){
         while (true){
             try{
                 System.out.println("1. Sắp xếp theo giá tăng dần");
                 System.out.println("2. Sắp xếp theo giá giảm dần");
+                System.out.println("3. Quay lại menu chính");
                 int choice = Integer.parseInt(scanner.nextLine());
                 if (choice == 1){
                     sanPhams.sort(new SortTangDan());
@@ -174,6 +146,4 @@ public class quanLiSanPham {
         }
         System.out.println(sanPhams.get(index));
     }
-
-
 }

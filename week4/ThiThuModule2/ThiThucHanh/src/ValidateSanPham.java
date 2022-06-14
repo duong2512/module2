@@ -37,16 +37,21 @@ public class ValidateSanPham {
             return checkCodeProduct(products);
         }
     }
-    public String checkNameProduct(ArrayList<SanPham> products){
-        System.out.println("Nhập tên sản phẩm :");
-        String nameProduct = sc.nextLine();
-        for(int i=0;i<products.size();i++){
-            if(products.get(i).getName().equals(nameProduct)){
-                System.out.println("Tên sản phẩm đã tồn tại, vui lòng nhập lại!");
-                return checkNameProduct(products);
+    public String checkNameProduct(){
+        String nameProduct;
+        while (true){
+            System.out.println("Nhập tên sản phẩm :");
+            nameProduct = sc.nextLine();
+            if (nameProduct.equals("")) {
+                System.out.println("Không được bỏ trống !");
+            } else {
+                if(checkName(nameProduct)){
+                    return nameProduct;
+                }else {
+                    System.out.println("Nhập tên sản phẩm không có số !");
+                }
             }
         }
-        return nameProduct;
     }
     public double checkPriceProduct(){
         try {
@@ -84,4 +89,16 @@ public class ValidateSanPham {
             return checkQuantityProduct();
         }
     }
+
+    boolean checkName(String name){
+        for (int i=0;i<name.length();i++){
+            try {
+                Integer.parseInt(Character.toString(name.charAt(i)));
+                return false;
+            }catch (Exception e){
+            }
+        }
+        return true;
+    }
+
 }

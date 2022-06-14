@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ReaderAndWirte {
     public void write(ArrayList<SanPham> sanPhams) {
-        File file = new File("sanpham.csv");
+        File file = new File("C:\\Users\\ADMIN\\IdeaProjects\\Module2\\week4\\ThiThuModule2\\ThiThucHanh\\src\\data\\products.csv");
         try {
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -21,7 +21,7 @@ public class ReaderAndWirte {
 
     public ArrayList<SanPham> reader() {
         ArrayList<SanPham> sanPhams = new ArrayList<>();
-        File file = new File("sanpham.csv");
+        File file = new File("C:\\Users\\ADMIN\\IdeaProjects\\Module2\\week4\\ThiThuModule2\\ThiThucHanh\\src\\data\\products.csv");
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);

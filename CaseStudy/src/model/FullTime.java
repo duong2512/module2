@@ -26,7 +26,7 @@ public class FullTime extends NhanVien{
     @Override
     public String toString() {
         return "Nhân viên Full time : " +
-                "Hệ số = " + heSo + " " +super.toString()
+                 " " +super.toString()
                 ;
     }
 }

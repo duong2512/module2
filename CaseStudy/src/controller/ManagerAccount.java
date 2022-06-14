@@ -6,8 +6,11 @@ import model.Account;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ManagerAccount implements Serializable {
+    ManagerAccount managerAccount ;
+
     public Account account;
     Scanner scanner = new Scanner(System.in);
 
@@ -76,7 +79,7 @@ public class ManagerAccount implements Serializable {
         String user = null;
         while (true) {
             System.out.println("Nhập userName :");
-             user = scanner.nextLine();
+            user = scanner.nextLine();
             if (checkUserName(user)) {
                 break;
             }else {
@@ -101,6 +104,7 @@ public class ManagerAccount implements Serializable {
         return true;
     }
 
+
     public void forgot(){
         try {
             int vt = 0;
@@ -115,8 +119,8 @@ public class ManagerAccount implements Serializable {
                 }
             }
             if (check){
-                String pass = scanner.nextLine();
                 System.out.println("Nhập mật khẩu mới :");
+                String pass = scanner.nextLine();
                 accounts.get(vt).setPassName(pass);
             }
             readerAndWrite.writer(accounts,"account.txt");

@@ -16,11 +16,18 @@ public class PartTime extends NhanVien {
         return numberTime * 200;
     }
 
-
     @Override
     public String toString() {
         return "Nhân viên Part time :" +
-                "Số buổi =" + numberTime + " " + super.toString()
+                " " + super.toString()
                 ;
+    }
+
+    public int getNumberTime() {
+        return numberTime;
+    }
+
+    public void setNumberTime(int numberTime) {
+        this.numberTime = numberTime;
     }
 }

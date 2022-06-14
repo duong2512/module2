@@ -10,7 +10,6 @@ public class NhanVien implements Serializable {
     private String gender;
     private String address;
     private String sdt;
-
     private String status;
 
     public NhanVien() {

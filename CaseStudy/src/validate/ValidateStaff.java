@@ -194,7 +194,7 @@ public class ValidateStaff {
             hs= Integer.parseInt(scanner.nextLine());
             try {
                 if(hs>0){
-                    break;
+                    return hs;
                 } else System.out.println("Nhập lại hệ số");
             } catch (NumberFormatException e){
                 System.out.println("Nhập sai định dạng !");
@@ -202,7 +202,6 @@ public class ValidateStaff {
                 System.out.println("Nhập lại hệ số");
             }
         }
-        return hs;
     }
 
     public int Valisobuoi() {

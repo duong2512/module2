@@ -13,45 +13,51 @@ public class ManagerStudent {
     Scanner scanner = new Scanner(System.in);
 
     public void menu(){
-        System.out.println("---- Chương Trình Quản Lý Sinh Viên ----");
-        System.out.println("Chọn chức năng theo số (để tiếp tục)");
-        System.out.println("1. Xem danh sách sinh viên");
-        System.out.println("2. Thêm mới");
-        System.out.println("3. Cập nhật");
-        System.out.println("4. Xóa");
-        System.out.println("5. Sắp xếp");
-        System.out.println("6. Đọc từ file");
-        System.out.println("7. Ghi vào file");
-        System.out.println("8. Thoát");
-        System.out.println("Chọn chức năng : ");
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice){
-            case 1:
-                show();
-                break;
-            case 2:
-                addStudent(Sinhviencreate());
-                break;
-            case 3:
-                System.out.println("nhap msv can sua");
-                int msv = Integer.parseInt(scanner.nextLine());
-                update(checkid(msv),Sinhviencreate());
-                break;
-            case 4:
-                remove();
-                break;
-            case 5:
-                sortById();
-                break;
-            case 6:
-               readAndWrite.read(students);
-                break;
-            case 7:
-                addStudent(Sinhviencreate());
-                readAndWrite.write(students);
-                break;
-            case 8:
-                break;
+        try {
+            System.out.println("---- Chương Trình Quản Lý Sinh Viên ----");
+            System.out.println("Chọn chức năng theo số (để tiếp tục)");
+            System.out.println("1. Xem danh sách sinh viên");
+            System.out.println("2. Thêm mới");
+            System.out.println("3. Cập nhật");
+            System.out.println("4. Xóa");
+            System.out.println("5. Sắp xếp");
+            System.out.println("6. Đọc từ file");
+            System.out.println("7. Ghi vào file");
+            System.out.println("8. Thoát");
+            System.out.println("Chọn chức năng : ");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice){
+                case 1:
+                    show();
+                    break;
+                case 2:
+                    addStudent(Sinhviencreate());
+                    break;
+                case 3:
+                    System.out.println("nhap msv can sua");
+                    int msv = Integer.parseInt(scanner.nextLine());
+                    update(checkid(msv),Sinhviencreate());
+                    break;
+                case 4:
+                    remove();
+                    break;
+                case 5:
+                    sortById();
+                    break;
+                case 6:
+                    readAndWrite.read(students);
+                    break;
+                case 7:
+                    addStudent(Sinhviencreate());
+                    readAndWrite.write(students);
+                    break;
+                case 8:
+                    break;
+            }
+        } catch (NumberFormatException e){
+            System.out.println("Nhập sai lựa chọn vui lòng nhập lại");
+        } catch (Exception e){
+            System.out.println("Nhập lại lựa chọn");
         }
     }
 

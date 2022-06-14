@@ -7,15 +7,13 @@ public class Main {
         ManagerNhanVien managerNhanVien = new ManagerNhanVien();
         ManagerAccount managerAccount = new ManagerAccount();
         while (true){
-
-
             if (managerAccount.account== null) {
                 managerAccount.menuAcc(managerAccount);
             } else {
                 if (managerAccount.account.getRole().equals("admin")) {
-                    managerNhanVien.menuAdmin();
+                    managerNhanVien.menuAdmin(managerAccount);
                 } else {
-                    managerNhanVien.menuUser();
+                    managerNhanVien.menuUser(managerAccount);
                 }
             }
         }
